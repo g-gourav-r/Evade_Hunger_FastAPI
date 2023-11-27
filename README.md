@@ -2,10 +2,10 @@
 
 ## Add Food Entry Endpoint:
 
-    -- Method: POST
-    -- Path: /add_food/
-    -- Request Body:
-    -- Body:
+- Method: POST
+- Path: /add_food/
+- Request Body:
+- Body:
 
 ```
 {
@@ -14,8 +14,7 @@
   "location": String
 }
 ```
-
--- Response Body:
+- Response Body:
 ```
 {
   "message": "Food entry added successfully"
