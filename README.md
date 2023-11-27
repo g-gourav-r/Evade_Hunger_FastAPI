@@ -2,10 +2,9 @@
 
 ## Add Food Entry Endpoint:
 
-- Method: POST
-- Path: /add_food/
+- Method: `POST`
+- Path: `/add_food/`
 - Request Body:
-- Body:
 
 ```
 {
@@ -22,8 +21,8 @@
 ```
 ## Update Food Status Endpoint:
 
-- Method: PUT
-- Path: /update_food_status
+- Method: `PUT`
+- Path: `/update_food_status`
 - Request Body:
 ```
 {
@@ -42,10 +41,10 @@
 ```
 ## View All Food Entries Endpoint:
 
-- Method: GET
-- Path: /view_all_food/
+- Method: `GET`
+- Path: `/view_all_food/`
 * Response Body:
-- Format: list
+- Format: `list`
 ```
 [
   {"ID": 1, "name": "ExampleFood1", "quantity": 10, "location": "Kitchen", "status": 0},
@@ -55,11 +54,11 @@
 ```
 ## View Food Entries with Status Endpoint:
 
-- Method: GET
-- Path: /view_food_with_status/{status}
-- Path Parameters: status (int)
+- Method: `GET`
+- Path: `/view_food_with_status/{status}`
+- Path Parameters: `status (int)`
 - Response Body:
-Format: list
+Format: `list`
 ```
 [
   {"ID": 1, "name": "ExampleFood1", "quantity": 10, "location": "Kitchen", "status": 1},
