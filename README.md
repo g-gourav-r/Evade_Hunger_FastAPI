@@ -2,9 +2,9 @@
 
 1. **Add User:**
 
-   * **Endpoint:**`/add_user`
-   * **HTTP Method:**`POST`
-   * **Request Body:**
+ * **Endpoint:**`/add_user`
+ * **HTTP Method:**`POST`
+ * **Request Body:**
 
      ```
      {
@@ -14,7 +14,7 @@
      "phone": "string"
      }
      ```
-   * **Response:**
+ * **Response:**
 
      ```
      {
