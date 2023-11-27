@@ -1,67 +1,22 @@
-# API signatures
+This is a simple FastAPI backend for managing donations and users.
 
-1. **Add User:**
+## Overview
 
-   * **Endpoint:**`/add_user`
-   * **HTTP Method:**`POST`
-   * **Request Body:**
+The application is designed to handle two main functionalities: donation management and user management. It provides RESTful APIs for adding food items for donation, updating their status, and managing user information.
 
-     ```
-     {
-     "name": "string",
-     "password": "string",
-     "email": "string",
-     "phone": "string"
-     }
-     ```
-   * **Response:**
+## Project Structure
 
-     ```
-     {
-       "message": "string"
-     }
-     ```
-2. **Show Users:**
+The project follows a modular structure for better organization:
 
-* **Endpoint:**`/users`
-* **HTTP Method:**`GET`
-* **Response**:
+* `app/`: The main package for the FastAPI application.
+  * `donation/`: Module for donation-related components.
+    * `models.py`: Pydantic models for donation.
+    * `routes.py`: FastAPI routes for donation.
+    * `services.py`: Functions handling business logic for donation.
+  * `users/`: Module for user-related components.
+    * `models.py`: Pydantic models for users.
+    * `routes.py`: FastAPI routes for users.
+    * `services.py`: Functions handling business logic for users.
+  * `main.py`: Main file to initialize the FastAPI app and include routes
 
-```
-{
-"users": [
-{
-"ID": 1,
-"name": "string",
-"password": "string",
-"type": 0,
-"email": "string",
-"phone": "string"
-},
-...
-]
-}
-```
-
-3. **Update User Type:**
-
-* **Endpoint:**`/update_user_type`
-* **HTTP Method:**`PUT`
-* **Request Body:**
-
-```
-{
-"user_id": Integer,
-"username": "string",
-"password": "string",
-"new_type": Integer
-}
-```
-
-* **Response:**
-
-```
-{
-"message": "string"
-}
 ```

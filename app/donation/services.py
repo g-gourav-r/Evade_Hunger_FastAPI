@@ -1,27 +1,13 @@
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
 import sqlite3
 
-app = FastAPI()
-
-# Define Pydantic models for request and response
-class FoodItem(BaseModel):
-    name: str
-    quantity: int
-    location: str
-
-class FoodUpdate(BaseModel):
-    ID: int
-    status: bool
-    name: str
-    password: str
+from fastapi import HTTPException
 
 
 def get_database_connection():
     return sqlite3.connect("database.db")
 
-@app.post("/add_food/", response_model=dict)
-async def add_food(food_item: FoodItem):
+
+async def add_food(food_item):
     # Establish a new connection to the database
     conn = get_database_connection()
     cursor = conn.cursor()
@@ -39,10 +25,7 @@ async def add_food(food_item: FoodItem):
         conn.close()
 
 
-# FastAPI endpoint to handle the update
-
-@app.put("/update_food_status")
-async def update_food_status(food_data: FoodUpdate):
+async def update_food_status(food_data):
     conn = sqlite3.connect("database.db")
     cursor = conn.cursor()
     try:
@@ -75,7 +58,6 @@ async def update_food_status(food_data: FoodUpdate):
         conn.close()
 
 
-@app.get("/view_all_food/", response_model=list)
 async def view_all_food():
     # Establish a new connection to the database
     conn = get_database_connection()
@@ -91,8 +73,8 @@ async def view_all_food():
         conn.close()
 
 
-@app.get("/view_food_with_status/{status}", response_model=list)
-async def view_food_with_status(status: int):
+async def view_food_with_status(status):
+    # Implementation
     # Establish a new connection to the database
     conn = get_database_connection()
     cursor = conn.cursor()
@@ -105,3 +87,4 @@ async def view_food_with_status(status: int):
     finally:
         # Close the database connection
         conn.close()
+

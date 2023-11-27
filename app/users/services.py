@@ -1,26 +1,8 @@
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
 import sqlite3
-
-app = FastAPI()
-
-
-class UserCreate(BaseModel):
-    name: str
-    password: str
-    email: str
-    phone: str
+from fastapi import HTTPException
 
 
-class UserTypeUpdate(BaseModel):
-    user_id: int
-    username: str
-    password: str
-    new_type: int
-
-
-@app.post("/add_user")
-async def add_user(user: UserCreate):
+def add_user(user):
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
 
@@ -43,7 +25,6 @@ async def add_user(user: UserCreate):
     return {"message": "Account created successfully!"}
 
 
-@app.get("/users")
 def show_users():
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
@@ -71,8 +52,7 @@ def show_users():
     return {"users": user_list}
 
 
-@app.put("/update_user_type")
-async def update_user_type(user_data: UserTypeUpdate):
+async def update_user_type(user_data):
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
 
