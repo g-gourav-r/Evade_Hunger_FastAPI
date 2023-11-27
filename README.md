@@ -1,67 +1,76 @@
-# API signatures
+# API signatures 
 
-1. **Add User:**
+- Add Food Entry Endpoint:
 
-   * **Endpoint:**`/add_user`
-   * **HTTP Method:**`POST`
-   * **Request Body:**
-
-     ```
-     {
-     "name": "string",
-     "password": "string",
-     "email": "string",
-     "phone": "string"
-     }
-     ```
-   * **Response:**
-
-     ```
-     {
-       "message": "string"
-     }
-     ```
-2. **Show Users:**
-
-* **Endpoint:**`/users`
-* **HTTP Method:**`GET`
-* **Response**:
-
-```
+  Method: POST
+  Path: /add_food/
+  Request Body:
+  Body: FoodItem
+Example:
+json
+Copy code
 {
-"users": [
+  "name": "ExampleFood",
+  "quantity": 10,
+  "location": "Kitchen"
+}
+Response Body:
+Format: dict
+Example:
+json
+Copy code
 {
-"ID": 1,
-"name": "string",
-"password": "string",
-"type": 0,
-"email": "string",
-"phone": "string"
-},
-...
+  "message": "Food entry added successfully"
+}
+Update Food Status Endpoint:
+
+Method: PUT
+Path: /update_food_status
+Request Body:
+Body: FoodUpdate
+Example:
+json
+Copy code
+{
+  "ID": 1,
+  "status": true,
+  "name": "example_user",
+  "password": "example_password"
+}
+Response Body:
+Format: dict
+Example:
+json
+Copy code
+{
+  "message": "Food status updated successfully for food_id: 1"
+}
+View All Food Entries Endpoint:
+
+Method: GET
+Path: /view_all_food/
+Response Body:
+Format: list
+Example:
+json
+Copy code
+[
+  {"ID": 1, "name": "ExampleFood1", "quantity": 10, "location": "Kitchen", "status": 0},
+  {"ID": 2, "name": "ExampleFood2", "quantity": 5, "location": "Pantry", "status": 1},
+  ...
 ]
-}
-```
+View Food Entries with Status Endpoint:
 
-3. **Update User Type:**
-
-* **Endpoint:**`/update_user_type`
-* **HTTP Method:**`PUT`
-* **Request Body:**
-
-```
-{
-"user_id": Integer,
-"username": "string",
-"password": "string",
-"new_type": Integer
-}
-```
-
-* **Response:**
-
-```
-{
-"message": "string"
-}
-```
+Method: GET
+Path: /view_food_with_status/{status}
+Path Parameters: status (int)
+Response Body:
+Format: list
+Example:
+json
+Copy code
+[
+  {"ID": 1, "name": "ExampleFood1", "quantity": 10, "location": "Kitchen", "status": 1},
+  {"ID": 3, "name": "ExampleFood3", "quantity": 8, "location": "Fridge", "status": 1},
+  ...
+]
