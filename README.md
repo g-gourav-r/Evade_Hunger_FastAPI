@@ -2,26 +2,25 @@
 
 - Add Food Entry Endpoint:
 
-  Method: POST
-  Path: /add_food/
-  Request Body:
-  Body: FoodItem
-Example:
-json
-Copy code
+  -- Method: POST
+  -- Path: /add_food/
+  -- Request Body:
+  -- Body:
+
+```
 {
-  "name": "ExampleFood",
-  "quantity": 10,
-  "location": "Kitchen"
+  "name": String,
+  "quantity": Integer,
+  "location": String
 }
-Response Body:
-Format: dict
-Example:
-json
-Copy code
+```
+
+-- Response Body:
+```
 {
   "message": "Food entry added successfully"
 }
+```
 Update Food Status Endpoint:
 
 Method: PUT
