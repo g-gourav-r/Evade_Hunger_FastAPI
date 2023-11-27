@@ -43,5 +43,3 @@ The API documentation is generated dynamically from the code docstrings. You can
   * Add User: `/add_user`
   * View All Users: `/users`
   * Update User Type: `/update_user_type`
-
-```
